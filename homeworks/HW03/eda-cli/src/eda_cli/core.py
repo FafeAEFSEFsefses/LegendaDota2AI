@@ -184,6 +184,15 @@ def compute_quality_flags(summary: DatasetSummary, missing_df: pd.DataFrame) -> 
     max_missing_share = float(missing_df["missing_share"].max()) if not missing_df.empty else 0.0
     flags["max_missing_share"] = max_missing_share
     flags["too_many_missing"] = max_missing_share > 0.5
+    
+    #1 Есть ли константные колонки
+
+    has_constant_columns = any(col.unique == 1 for col in summary.columns)
+    flags["has_constant_columns"] = has_constant_columns
+
+    #2 Есть ли много колонок с пропусками 
+    missing_columns_share = ((missing_df["missing_share"] > 0).mean() if not missing_df.empty else 0.0)
+    flags["many_missing_columns"] = missing_columns_share > 0.3
 
     # Простейший «скор» качества
     score = 1.0

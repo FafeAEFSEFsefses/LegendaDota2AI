@@ -41,6 +41,17 @@ uv run eda-cli overview data/example.csv
 uv run eda-cli report data/example.csv --out-dir reports
 ```
 
+Дополнительные параметры отчёта:
+
+- `--title` — задаёт заголовок отчёта (`report.md`);
+- `--top-k-categories` — сколько top-значений сохранять для категориальных колонок;
+
+Пример запуска с параметрами:
+
+```bash
+uv run eda-cli report data/example.csv --out-dir reports_cli --title "HW03 report" --top-k-categories 3
+```
+
 В результате в каталоге `reports/` появятся:
 
 - `report.md` – основной отчёт в Markdown;

@@ -59,3 +59,34 @@ def test_correlation_and_top_categories():
     city_table = top_cats["city"]
     assert "value" in city_table.columns
     assert len(city_table) <= 2
+
+def test_has_constant_columns_flag():
+    # DataFrame с константной колонкой
+    df = pd.DataFrame(
+        {
+            "a": [1, 2, 3, 4],
+            "b": [5, 5, 5, 5],  
+        }
+    )
+
+    summary = summarize_dataset(df)
+    missing_df = missing_table(df)
+
+    flags = compute_quality_flags(summary, missing_df)
+
+    assert "has_constant_columns" in flags
+    assert flags["has_constant_columns"] is True
+
+def test_many_missing_columns_flag():
+    df = pd.DataFrame({
+    "a": [None, None, None, 1],
+    "b": [None, None, None, 1],
+    "c": [None, None, None, 1],
+    })
+
+    summary = summarize_dataset(df)
+    missing_df = missing_table(df)
+
+    flags = compute_quality_flags(summary, missing_df)
+
+    assert flags["many_missing_columns"]

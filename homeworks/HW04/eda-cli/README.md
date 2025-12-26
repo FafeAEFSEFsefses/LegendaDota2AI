@@ -78,3 +78,29 @@ uv run pytest -q
 ```bash
 uv sync
 uv run uvicorn eda_cli.api:app --reload --port 8000
+
+## HTTP API
+
+Сервис предоставляет HTTP-интерфейс для оценки качества датасетов.
+
+### POST /quality-flags-from-csv
+
+Дополнительный эндпоинт, реализованный в рамках HW04.
+
+Принимает CSV-файл и возвращает полный набор флагов качества данных,
+используя эвристики, реализованные в HW03.
+
+Описание:
+- вход: CSV-файл (multipart/form-data)
+- обработка: summarize_dataset, missing_table, compute_quality_flags
+- выход: JSON со всеми булевыми флагами качества
+
+Пример ответа:
+`json
+{
+  "flags": {
+    "too_few_rows": true,
+    "too_many_missing": false,
+    "has_constant_columns": false
+  }
+}

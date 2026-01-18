@@ -1,0 +1,28 @@
+{
+  "DecisionTree": {
+    "best_params": {
+      "criterion": "entropy",
+      "max_depth": 10,
+      "min_samples_leaf": 10
+    },
+    "best_score": 0.9043143349494155
+  },
+  "RandomForest": {
+    "best_params": {
+      "max_depth": null,
+      "max_features": "log2",
+      "min_samples_leaf": 1,
+      "n_estimators": 200
+    },
+    "best_score": 0.9663240268203509
+  },
+  "GradientBoosting": {
+    "best_params": {
+      "learning_rate": 0.1,
+      "max_depth": 5,
+      "n_estimators": 200,
+      "subsample": 0.8
+    },
+    "best_score": 0.9681830131366631
+  }
+}

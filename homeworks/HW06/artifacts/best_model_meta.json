@@ -1,0 +1,12 @@
+{
+  "model_name": "Stacking",
+  "best_params": "N/A",
+  "test_metrics": {
+    "accuracy": 0.937,
+    "f1": 0.9005786428195687,
+    "roc_auc": 0.9705687877710627
+  },
+  "timestamp": "2026-01-18T15:17:29.951603",
+  "dataset": "S06-hw-dataset-01.csv",
+  "random_state": 42
+}
